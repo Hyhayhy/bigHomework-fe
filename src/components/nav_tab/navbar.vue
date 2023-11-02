@@ -9,37 +9,58 @@ const handleSelect = (key: string, keyPath: string[]) => {
 </script>
 <template>
   <el-menu
-    :default-active="activeIndex"
-    class="el-menu-demo"
-    mode="horizontal"
-    :ellipsis="false"
-    @select="handleSelect"
-    bg-color="#000000"
-    popper-effect="dark"
-    :router="true"
+      :default-active="activeIndex"
+      class="el-menu-demo"
+      mode="horizontal"
+      :ellipsis="false"
+      @select="handleSelect"
+      background-color="#ffffff"
+      popper-effect="dark"
+      :router="true"
+      style="--el-menu-hover-bg-color: rgb(255, 255, 255);width: 80%;margin: 0 auto"
   >
     <el-menu-item index="/">
       <img
-        style="width: 100px;height: 65px;"
-        src="/src/image/hwx.svg"
-        alt="HWX logo"
+          style="width: 100px; height: 65px"
+          src="/src/image/hwx.svg"
+          alt="HWX logo"
       />
     </el-menu-item>
     <div class="flex-grow" />
     <el-menu-item index="/">主页</el-menu-item>
-    <el-sub-menu index="2">
+    <!-- <el-sub-menu index="2">
       <template #title>创意工坊</template>
       <el-menu-item index="/music">音乐</el-menu-item>
-    </el-sub-menu>
+    </el-sub-menu> -->
+    <el-menu-item index="/music">音乐</el-menu-item>
     <el-menu-item index="users">用户</el-menu-item>
-    <el-menu-item index="4">
+    <el-menu-item>
       <changeDark></changeDark>
     </el-menu-item>
   </el-menu>
+  <hr>
 </template>
 
 <style scoped lang="scss">
 .flex-grow {
   flex-grow: 1;
 }
+
+/* 水平时，去除底部白边。 */
+.el-menu.el-menu--horizontal {
+  border-bottom: 0;
+  // width: 100%;
+}
+.el-menu--horizontal > .el-menu-item {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.el-menu {
+  .el-menu-item.is-active {
+    background-color: #fff !important;
+    border-bottom: #fff !important;
+  }
+}
+
 </style>
