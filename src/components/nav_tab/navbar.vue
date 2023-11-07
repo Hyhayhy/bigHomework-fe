@@ -4,7 +4,7 @@ import changeDark from "./changeDark.vue";
 const value1 = ref(true);
 const activeIndex = ref("1");
 const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
+  // console.log(key, keyPath);
 };
 </script>
 <template>
@@ -22,7 +22,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
     <el-menu-item index="/">
       <img
           style="width: 100px; height: 65px"
-          src="/src/image/hwx.svg"
+          src="/src/image/hwx2.jpg"
           alt="HWX logo"
       />
     </el-menu-item>

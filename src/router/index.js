@@ -11,7 +11,8 @@ const routes = [
   },
   {
     path:'/music',
-    component:()=>import('../views/Music/music.vue')
+    component:()=>import('../views/Music/music.vue'),
+    name:'音乐'
   }
 ]
 
@@ -22,4 +23,8 @@ const router = createRouter({
   routes
 })
 
+router.afterEach((to) => {
+  // console.log(blog);
+  document.title = to.name || "韩少yyds";
+});
 export default router
