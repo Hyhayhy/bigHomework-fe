@@ -10,7 +10,7 @@ const search=()=>{
 }
 function getAudioUrl(){
   mUrl.value=information.value.musicUrl
-  console.log(mUrl.value)
+  // console.log(mUrl.value)
 }
 onMounted(()=>{
   // console.log(information.value.musicUrl)
@@ -22,7 +22,7 @@ onMounted(()=>{
     <br>
     <music-info ref="information" @getAudioUrl="getAudioUrl"></music-info>
     <!-- audio标签 -->
-    <audio ref="audio" :src="mUrl.value" loop="loop" controls></audio>
+    <audio ref="audio" :src="mUrl" loop="loop" controls></audio>
     <br>
     <el-button @click="search">搜索</el-button>
   </div>

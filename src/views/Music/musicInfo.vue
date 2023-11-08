@@ -3,13 +3,13 @@ import axios from "axios";
 import {ref, defineExpose,onMounted} from "vue";
 const musicUrl=ref("")
 const musicId=ref("")
-const musicName=ref("小苹果")
+const musicName=ref("起风了")
 const emit = defineEmits([ "getAudioUrl" ]);
 const getAudioUrl = () => {
   emit('getAudioUrl');
 }
 const searchMusic=()=>{
-  axios.get(`http://localhost:3000/search?keywords=${musicName.value}`).then((data)=>{
+  axios.get(`http://101.42.249.157:3000/search?keywords=${musicName.value}`).then((data)=>{
     // console.log(data.data.result.songs[0].id)
     musicId.value=data.data.result.songs[0].id;
     getMusicUrl()
@@ -17,7 +17,7 @@ const searchMusic=()=>{
 }
 function getMusicUrl(){
   // console.log("#####")
-  axios.get(`http://localhost:3000/song/url/v1?id=${musicId.value}&level=standard`).then((data)=>{
+  axios.get(`http://101.42.249.157:3000/song/url/v1?id=${musicId.value}&level=standard`).then((data)=>{
     // console.log(data.data.data[0].url)
     musicUrl.value=data.data.data[0].url;
     // console.log("12")
