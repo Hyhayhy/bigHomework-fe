@@ -7,12 +7,17 @@ const routes = [
   },
   {
     path:'/users',
-    component:()=>import('../views/users/userCenter.vue')
+    component:()=>import('../views/users/userCenter.vue'),
+    name: '用户'
   },
   {
     path:'/music',
     component:()=>import('../views/Music/music.vue'),
     name:'音乐'
+  },
+  {
+    path: '/login',
+    component:()=>import('../views/Login.vue')
   }
 ]
 

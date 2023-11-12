@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import changeDark from "./changeDark.vue";
+import Avtar from './Avtar.vue'
 const value1 = ref(true);
 const activeIndex = ref("1");
 const handleSelect = (key: string, keyPath: string[]) => {
@@ -33,7 +34,11 @@ const handleSelect = (key: string, keyPath: string[]) => {
       <el-menu-item index="/music">音乐</el-menu-item>
     </el-sub-menu> -->
     <el-menu-item index="/music">音乐</el-menu-item>
-    <el-menu-item index="users">用户</el-menu-item>
+    <el-menu-item index="/users">用户</el-menu-item>
+    <el-menu-item index="/login">登陆</el-menu-item>
+    <el-menu-item>
+      <Avtar></Avtar>
+    </el-menu-item>
     <el-menu-item>
       <changeDark></changeDark>
     </el-menu-item>
