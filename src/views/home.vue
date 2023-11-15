@@ -16,7 +16,7 @@ const getJinJu = () => {
   });
 }
 onMounted(() => {
-  axios.get('http://localhost:8080/hello').then((data) => {
+  axios.get('http://localhost:9088/hello').then((data) => {
     str2.value = data.data
     // console.log(data.data)
   })

@@ -5,12 +5,16 @@ import Footer from './components/nav_tab/Footer.vue'
 import dog from './views/dog.vue'
 </script>
 
-<template>
-  <Navbar></Navbar>
-  <router-view/>
-  <dog></dog>
-  <Footer class="foot"></Footer>
-</template>
+  <template>
+    <div class="common-layout">
+      <el-container>
+        <el-header><Navbar></Navbar></el-header>
+        <el-main><router-view/></el-main>
+        <dog></dog>
+        <el-footer><Footer class="foot"></Footer></el-footer>
+      </el-container>
+    </div>
+  </template>
 
 <style scoped>
 .foot{

@@ -14,9 +14,12 @@
 </template>
 
 <script lang="ts" setup>
-const url = '/src/image/hwx5.jpg'
+
+import pubUse from '@/utils/pubUse';
+import {ref} from "vue";
+const url = ref(pubUse.getAssetsFile('hwx5.jpg'))
 const srcList = [
-  '/src/image/hwx5.jpg',
+  pubUse.getAssetsFile('hwx5.jpg'),
 ]
 </script>
 

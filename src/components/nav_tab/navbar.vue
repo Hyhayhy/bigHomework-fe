@@ -4,9 +4,13 @@ import changeDark from "./changeDark.vue";
 import Avtar from './Avtar.vue'
 const value1 = ref(true);
 const activeIndex = ref("1");
+const hasLogin =ref(false)
 const handleSelect = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath);
 };
+const change = () => {
+  alert('123')
+}
 </script>
 <template>
   <el-menu
@@ -28,18 +32,21 @@ const handleSelect = (key: string, keyPath: string[]) => {
       />
     </el-menu-item>
     <div class="flex-grow" />
-    <el-menu-item index="/">主页</el-menu-item>
-    <!-- <el-sub-menu index="2">
-      <template #title>创意工坊</template>
-      <el-menu-item index="/music">音乐</el-menu-item>
-    </el-sub-menu> -->
+    <el-menu-item index="/" icon='el-icon-caret-top'>主页</el-menu-item>
+<!--    <el-sub-menu index="2">-->
+<!--      <template #title>创意工坊</template>-->
+<!--      <el-menu-item index="/music">音乐</el-menu-item>-->
+<!--    </el-sub-menu>-->
     <el-menu-item index="/music">音乐</el-menu-item>
-    <el-menu-item index="/users">用户</el-menu-item>
-    <el-menu-item index="/login">登陆</el-menu-item>
-    <el-menu-item>
-      <Avtar></Avtar>
-    </el-menu-item>
-    <el-menu-item>
+    <el-menu-item v-if="hasLogin" index="/login">登陆</el-menu-item>
+<!--    <el-sub-menu index="/users" :collapse-transition="false">-->
+<!--      <template #title><Avtar></Avtar></template>-->
+<!--      <el-menu-item index="2-1">item one</el-menu-item>-->
+<!--      <el-menu-item index="2-2">item two</el-menu-item>-->
+<!--      <el-menu-item index="2-3">item three</el-menu-item>-->
+<!--    </el-sub-menu>-->
+    <el-menu-item index="/users"><Avtar></Avtar></el-menu-item>
+    <el-menu-item >
       <changeDark></changeDark>
     </el-menu-item>
   </el-menu>
