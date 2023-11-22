@@ -4,13 +4,16 @@ import {onMounted, ref} from "vue";
 
 const information=ref(null)
 const mUrl=ref("")
-
+const iUrl=ref("")
+const lyric=ref("")
 const search=()=>{
   information.value.searchMusic()
 }
-function getAudioUrl(){
+function getAudioInfo(){
   mUrl.value=information.value.musicUrl
-  // console.log(mUrl.value)
+  iUrl.value=information.value.musicImg
+  lyric.value=information.value.musicLyc
+  // console.log(lyric.value)
 }
 onMounted(()=>{
   // console.log(information.value.musicUrl)
@@ -18,13 +21,14 @@ onMounted(()=>{
 </script>
 <template>
   <div>
-    <h1>我是music</h1>
-    <br>
-    <music-info ref="information" @getAudioUrl="getAudioUrl"></music-info>
+    <music-info ref="information" @getAudioInfo="getAudioInfo"></music-info>
+    <el-button @click="search" >搜索</el-button>
     <!-- audio标签 -->
-    <audio ref="audio" :src="mUrl" loop="loop" controls></audio>
     <br>
-    <el-button @click="search">搜索</el-button>
+    <audio ref="audio" :src="mUrl" loop="loop"  controls></audio>
+    <br>
+    <el-image :src="iUrl" style="height: 300px;width: 300px"></el-image>
+    {{lyric}}
   </div>
 </template>
 <style scoped lang="scss">

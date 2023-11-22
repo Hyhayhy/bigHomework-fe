@@ -16,10 +16,10 @@ const getJinJu = () => {
   });
 }
 onMounted(() => {
-  axios.get('http://localhost:9088/hello').then((data) => {
-    str2.value = data.data
-    // console.log(data.data)
-  })
+  // axios.get('http://localhost:9088/hello').then((data) => {
+  //   str2.value = data.data
+  //   // console.log(data.data)
+  // })
 })
 </script>
 <template>
@@ -31,6 +31,20 @@ onMounted(() => {
       <el-button v-else type="danger" disabled>获取金句</el-button>
     </el-row>
     <h1>{{ str2 }}</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+
   </div>
 </template>
 <style scoped lang="scss">

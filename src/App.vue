@@ -11,17 +11,11 @@ import dog from './views/dog.vue'
         <el-header><Navbar></Navbar></el-header>
         <el-main><router-view/></el-main>
         <dog></dog>
-        <el-footer><Footer class="foot"></Footer></el-footer>
+        <el-footer><Footer></Footer></el-footer>
       </el-container>
     </div>
   </template>
 
 <style scoped>
-.foot{
-  height: 60px;
-  line-height: 60px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
+
 </style>

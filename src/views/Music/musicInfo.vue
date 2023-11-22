@@ -1,53 +1,74 @@
 <script setup lang="ts">
 import axios from "axios";
 import {ref, defineExpose,onMounted} from "vue";
+import { Search } from '@element-plus/icons-vue'
+import {cloudSearch} from '@/api/api'
 const musicUrl=ref("")
 const musicId=ref("")
 const musicName=ref("起风了")
-const emit = defineEmits([ "getAudioUrl" ]);
-const getAudioUrl = () => {
-  emit('getAudioUrl');
+const musicImg=ref("")
+const musicLyc=ref("")
+const emit = defineEmits([ "getAudioInfo" ]);
+const getAudioInfo = () => {
+  emit('getAudioInfo');
 }
-const searchMusic=()=>{
-  axios.get(`http://101.42.249.157:3000/search?keywords=${musicName.value}`).then((data)=>{
-    // console.log(data.data.result.songs[0].id)
-    musicId.value=data.data.result.songs[0].id;
-    getMusicUrl()
+const searchMusic= async ()=>{
+   await axios.get(`http://hexpect.cn:3000/cloudsearch?keywords=${musicName.value}`).then((data)=>{
+    // console.log(data.data.result.songs[0])
+    musicId.value=data.data.result.songs[0].id
+    musicImg.value=data.data.result.songs[0].al.picUrl
+  })
+  // console.log(3)
+  await getMusicUrl()
+  await getMusicLyc()
+  getAudioInfo()
+}
+
+async function getMusicLyc(){
+  // console.log(3)
+    await axios.get(`http://hexpect.cn:3000/lyric?id=${musicId.value}`).then((data)=>{
+    // console.log(data.data.lrc.lyric)
+    //  console.log(4)
+    musicLyc.value=data.data.lrc.lyric
+    // musicUrl.value=data.data.data[0].url;
   })
 }
-function getMusicUrl(){
+
+async function getMusicUrl(){
+  // console.log(1)
   // console.log("#####")
-  axios.get(`http://101.42.249.157:3000/song/url/v1?id=${musicId.value}&level=standard`).then((data)=>{
-    // console.log(data.data.data[0].url)
+  await axios.get(`http://hexpect.cn:3000/song/url/v1?id=${musicId.value}&level=standard`).then((data)=>{
+    console.log(data.data.data[0].url)
+    // console.log(2)
     musicUrl.value=data.data.data[0].url;
-    // console.log("12")
-    getAudioUrl()
+    // console.log("1")
   })
 }
 
 defineExpose({
   searchMusic,
   musicUrl,
+  musicImg,
+  musicLyc
 })
 
 
 
 interface LinkItem {
   value: string
-  link: string
 }
 
 const links = ref<LinkItem[]>([])
 
 const loadAll = () => {
   return [
-    { value: 'vue', link: 'https://github.com/vuejs/vue' },
-    { value: 'element', link: 'https://github.com/ElemeFE/element' },
-    { value: 'cooking', link: 'https://github.com/ElemeFE/cooking' },
-    { value: 'mint-ui', link: 'https://github.com/ElemeFE/mint-ui' },
-    { value: 'vuex', link: 'https://github.com/vuejs/vuex' },
-    { value: 'vue-router', link: 'https://github.com/vuejs/vue-router' },
-    { value: 'babel', link: 'https://github.com/babel/babel' },
+    { value: 'vue' },
+    { value: 'element' },
+    { value: 'cooking' },
+    { value: 'mint-ui' },
+    { value: 'vuex' },
+    { value: 'vue-router' },
+    { value: 'babel' },
   ]
 }
 
@@ -60,7 +81,7 @@ const querySearchAsync = (queryString: string, cb: (arg: any) => void) => {
   clearTimeout(timeout)
   timeout = setTimeout(() => {
     cb(results)
-  }, 3000 * Math.random())
+  }, 1000 * Math.random())
 }
 const createFilter = (queryString: string) => {
   return (restaurant: LinkItem) => {
@@ -76,6 +97,7 @@ const handleSelect = (item: Record<string, any>) => {
 
 onMounted(() => {
   links.value = loadAll()
+  searchMusic()
 })
 </script>
 
@@ -85,7 +107,13 @@ onMounted(() => {
       :fetch-suggestions="querySearchAsync"
       :placeholder="musicName"
       @select="handleSelect"
-  />
+  >
+    <template #suffix>
+      <el-icon class="el-input__icon">
+        <Search />
+      </el-icon>
+    </template>
+  </el-autocomplete>
 </template>
 
 <style scoped lang="scss">
