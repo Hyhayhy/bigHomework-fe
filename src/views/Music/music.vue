@@ -28,6 +28,7 @@ onMounted(()=>{
     <audio ref="audio" :src="mUrl" loop="loop"  controls></audio>
     <br>
     <el-image :src="iUrl" style="height: 300px;width: 300px"></el-image>
+    <br>
     {{lyric}}
   </div>
 </template>

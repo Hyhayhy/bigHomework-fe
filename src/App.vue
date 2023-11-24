@@ -2,7 +2,6 @@
 import Navbar from './components/nav_tab/navbar.vue'
 import router from './router';
 import Footer from './components/nav_tab/Footer.vue'
-import dog from './views/dog.vue'
 </script>
 
   <template>
@@ -10,7 +9,6 @@ import dog from './views/dog.vue'
       <el-container>
         <el-header><Navbar></Navbar></el-header>
         <el-main><router-view/></el-main>
-        <dog></dog>
         <el-footer><Footer></Footer></el-footer>
       </el-container>
     </div>

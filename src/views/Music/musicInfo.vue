@@ -38,7 +38,7 @@ async function getMusicUrl(){
   // console.log(1)
   // console.log("#####")
   await axios.get(`http://hexpect.cn:3000/song/url/v1?id=${musicId.value}&level=standard`).then((data)=>{
-    console.log(data.data.data[0].url)
+    // console.log(data.data.data[0].url)
     // console.log(2)
     musicUrl.value=data.data.data[0].url;
     // console.log("1")
