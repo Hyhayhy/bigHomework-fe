@@ -5,9 +5,10 @@ import { Search } from '@element-plus/icons-vue'
 import {cloudSearch} from '@/api/api'
 const musicUrl=ref("")
 const musicId=ref("")
-const musicName=ref("起风了")
+const musicName=ref("鲜花铺满未来的路")
 const musicImg=ref("")
 const musicLyc=ref("")
+const musicArtist=ref("")
 const emit = defineEmits([ "getAudioInfo" ]);
 const getAudioInfo = () => {
   emit('getAudioInfo');
@@ -15,6 +16,7 @@ const getAudioInfo = () => {
 const searchMusic= async ()=>{
    await axios.get(`http://hexpect.cn:3000/cloudsearch?keywords=${musicName.value}`).then((data)=>{
     // console.log(data.data.result.songs[0])
+    // musicArtist.value=data.data.result.songs[0].ar[0].name
     musicId.value=data.data.result.songs[0].id
     musicImg.value=data.data.result.songs[0].al.picUrl
   })
@@ -49,7 +51,9 @@ defineExpose({
   searchMusic,
   musicUrl,
   musicImg,
-  musicLyc
+  musicLyc,
+  musicName,
+  musicArtist
 })
 
 
