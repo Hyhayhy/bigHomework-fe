@@ -11,6 +11,7 @@
 
 <style scoped lang="scss">
 .el-link {
+  bottom: 0;
   margin-right: 8px;
 }
 .el-link .el-icon--right.el-icon {

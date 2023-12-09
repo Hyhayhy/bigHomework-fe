@@ -1,47 +1,42 @@
 <script setup>
 import axios from "axios";
 import {ref} from "vue";
-import { useUserStore } from '../store/index';
-const userName = ref("")
-const password = ref("")
+const userName=ref("")
+const password=ref("")
+const passwordView=ref("password")
 
-const userStore = useUserStore();
 
-// const login = () => {
-//   // 假设用户 ID 是 "12345"
-//   userStore.login('12345');
-// };
-
-const login = () => {
+const register=()=>{
+  let userList = {
+    id:"",
+    username: userName.value,
+    password:password.value,
+  };
+  // console.log(userList)
   let config = {
     method: 'post',
-    url: 'http://localhost:9002/user/login?username=' + userName.value + '&password=' + password.value,
+    url: 'http://localhost:9002/user/enroll',
     headers: {
       // 'User-Agent': 'Apifox/1.0.0 (https://www.apifox.cn)',
       'Content-Type': 'application/json'
     },
+    data : JSON.parse(JSON.stringify(userList))
   };
 
-  axios(config).then(function (response) {
-    // console.log(JSON.stringify(response.data));
-    if (response.data.code === 200) {
-      window.location.href = '/';
-      userStore.login(response.data.data.id);
-    } else {
-      alert(response.data.message);
-    }
-  })
-      .catch(function (error) {
-        console.log(error);
-      });
+    axios(config).then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 </script>
 <template>
   <div>
     <div class="form">
-      <p class="form-title">登陆你的帐号</p>
+      <p class="form-title">注册你的帐号</p>
       <div class="input-container">
-        <!--        <input placeholder="用户名" v-model="userName">-->
+<!--        <input placeholder="用户名" v-model="userName">-->
         <el-input
             v-model="userName"
             class="w-50 m-2"
@@ -49,9 +44,8 @@ const login = () => {
             placeholder="用户名"
         />
       </div>
-      <br>
       <div class="input-container">
-        <!--        <input type="password" placeholder="密码" v-model="password">-->
+<!--        <input :type="passwordView" placeholder="密码" v-model="password">-->
         <el-input
             v-model="password"
             type="password"
@@ -60,14 +54,12 @@ const login = () => {
             size="large"
         />
       </div>
-      <button class="submit" @click="login">
-        登 陆
+      <button class="submit" @click="register">
+        注 册
       </button>
       <div class="signup-link">
-        没有账户？
-        <router-link to="/register">
-          <el-link :underline="false">注册</el-link>
-        </router-link>
+        已有账户？
+        <router-link to="/login"><el-link :underline="false">登陆</el-link></router-link>
       </div>
     </div>
   </div>
@@ -76,11 +68,9 @@ const login = () => {
 .el-link {
   margin-right: 8px;
 }
-
 .el-link .el-icon--right.el-icon {
   vertical-align: text-bottom;
 }
-
 .form {
   margin: 10% auto;
   background-color: #fff;

@@ -18,6 +18,23 @@ const routes = [
   {
     path: '/login',
     component:()=>import('../views/Login.vue')
+  },
+  {
+    path: '/register',
+    component:()=>import('../views/register.vue')
+  },
+  {
+    path:'/vote',
+    component:()=>import('../views/vote/voteQuestion.vue'),
+  },
+  {
+    path:'/vote/voteEdit',
+    component:()=>import('../views/vote/voteEdit.vue'),
+  },
+  {
+    path: '/vote/:pid?:title',
+    component:()=>import('../views/vote/voteDetail.vue'),
+    name: 'voteDetail'
   }
 ]
 

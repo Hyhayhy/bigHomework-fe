@@ -16,7 +16,7 @@ const getAudioInfo = () => {
 const searchMusic= async ()=>{
    await axios.get(`http://hexpect.cn:3000/cloudsearch?keywords=${musicName.value}`).then((data)=>{
     // console.log(data.data.result.songs[0])
-    // musicArtist.value=data.data.result.songs[0].ar[0].name
+    musicArtist.value=data.data.result.songs[0].ar[0].name
     musicId.value=data.data.result.songs[0].id
     musicImg.value=data.data.result.songs[0].al.picUrl
   })

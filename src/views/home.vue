@@ -15,14 +15,20 @@ const getJinJu = () => {
     }, 60000)
   });
 }
+
+
 onMounted(() => {
-  // axios.get('http://localhost:9088/hello').then((data) => {
-  //   str2.value = data.data
-  //   // console.log(data.data)
-  // })
 })
 </script>
 <template>
+  <div style="height: 100%;width: 100%">
+    <el-carousel :interval="5000" arrow="always" >
+      <el-carousel-item v-for="item in 4" :key="item">
+        <h3 text="2xl" justify="center">{{ item }}</h3>
+      </el-carousel-item>
+    </el-carousel>
+  </div>
+
   <div>
     <h1>我是home</h1>
     <h1>{{ str }}</h1>
@@ -31,20 +37,6 @@ onMounted(() => {
       <el-button v-else type="danger" disabled>获取金句</el-button>
     </el-row>
     <h1>{{ str2 }}</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-    <h1>1</h1>
-
   </div>
 </template>
 <style scoped lang="scss">

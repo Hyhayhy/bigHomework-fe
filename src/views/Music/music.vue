@@ -20,6 +20,7 @@ function getAudioInfo(){
   tracks.value.cover=information.value.musicImg
   tracks.value.name=information.value.musicName
   tracks.value.artist=information.value.musicArtist
+  // console.log(information.value.musicArtist)
   playMusic()
 }
 
@@ -66,7 +67,6 @@ const generateTime = () => {
 };
 
 const updateBar = (x) => {
-  let progress = ref("progress")
   let maxduration = audio.value.duration;
   let position = x - progress.offsetLeft;
   let percentage = (100 * position) / progress.offsetWidth;

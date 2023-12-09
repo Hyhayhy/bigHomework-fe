@@ -45,6 +45,7 @@ const change = () => {
 <!--      <el-menu-item index="2-2">item two</el-menu-item>-->
 <!--      <el-menu-item index="2-3">item three</el-menu-item>-->
 <!--    </el-sub-menu>-->
+    <el-menu-item index="/vote">投票</el-menu-item>
     <el-menu-item index="/users"><Avtar></Avtar></el-menu-item>
     <el-menu-item >
       <changeDark></changeDark>
