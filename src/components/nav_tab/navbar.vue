@@ -8,9 +8,7 @@ const hasLogin =ref(false)
 const handleSelect = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath);
 };
-const change = () => {
-  alert('123')
-}
+
 </script>
 <template>
   <el-menu
@@ -19,15 +17,15 @@ const change = () => {
       mode="horizontal"
       :ellipsis="false"
       @select="handleSelect"
-      background-color="#ffffff"
       popper-effect="dark"
       :router="true"
-      style="--el-menu-hover-bg-color: rgb(255, 255, 255);width: 80%;margin: 0 auto"
+      style="--el-menu-hover-bg-color: rgb(255,255,255);width: 100%;margin: 0 auto"
+      background-color="#fff"
   >
     <el-menu-item index="/">
       <img
-          style="width: 100px; height: 65px"
-          src="/src/image/hwx2.jpg"
+          style="width: 60px; height: 65px"
+          src="/src/image/H-01.png"
           alt="HWX logo"
       />
     </el-menu-item>
@@ -46,12 +44,12 @@ const change = () => {
 <!--      <el-menu-item index="2-3">item three</el-menu-item>-->
 <!--    </el-sub-menu>-->
     <el-menu-item index="/vote">投票</el-menu-item>
+    <el-menu-item index="/bookMain">书籍</el-menu-item>
     <el-menu-item index="/users"><Avtar></Avtar></el-menu-item>
     <el-menu-item >
       <changeDark></changeDark>
     </el-menu-item>
   </el-menu>
-  <hr>
 </template>
 
 <style scoped lang="scss">
@@ -65,10 +63,9 @@ const change = () => {
   // width: 100%;
 }
 .el-menu--horizontal > .el-menu-item {
-  border-bottom: none;
+  border-bottom:none;
   text-decoration: none;
 }
-
 .el-menu {
   .el-menu-item.is-active {
     background-color: #fff !important;

@@ -7,11 +7,12 @@ import loading from './components/loading.vue'
 
   <template>
     <div class="common-layout">
-      <el-container>
-        <el-header><Navbar></Navbar></el-header>
-        <el-main><router-view/></el-main>
-        <el-footer><Footer></Footer></el-footer>
-      </el-container>
+
+<!--        <el-aside :offset="0">123</el-aside>-->
+        <el-affix><Navbar></Navbar></el-affix>
+        <router-view/>
+        <Footer class="foot"></Footer>
+
     </div>
 <!--    <div class="load"><loading></loading></div>-->
 
@@ -29,5 +30,9 @@ import loading from './components/loading.vue'
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.foot{
+  position: static;
+  bottom: 0;
 }
 </style>

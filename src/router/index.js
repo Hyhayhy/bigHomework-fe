@@ -35,6 +35,15 @@ const routes = [
     path: '/vote/:pid?:title',
     component:()=>import('../views/vote/voteDetail.vue'),
     name: 'voteDetail'
+  },
+  {
+    path:'/bookMain',
+    component:()=>import('../views/book/bookMain.vue'),
+  },
+  {
+    path:'/video',
+    component:()=>import('../views/video/video.vue'),
+    name:'videoDetail'
   }
 ]
 
